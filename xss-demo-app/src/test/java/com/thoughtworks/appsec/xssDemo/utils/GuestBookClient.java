@@ -49,7 +49,7 @@ public class GuestBookClient {
     }
 
     private void waitFor(Supplier<Boolean> test) {
-        waitFor(test, 5000);
+        waitFor(test, 10000);
     }
 
     private void waitFor(Supplier<Boolean> test, long maxWait) {
