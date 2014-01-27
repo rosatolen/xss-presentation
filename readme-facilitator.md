@@ -20,7 +20,7 @@ everyone rather than having everyone exploit the vulnerability themselves.
 
 To do this, have the demo application running before you start presenting,
 and when you get to slide #7, switch away from the presentation, open up
-`http://localhost:8081`, and demonstrate the exploit. One strategy to keep
+`http://localhost:8080`, and demonstrate the exploit. One strategy to keep
 people involved when doing this is having the participants make suggestions
 about what you should type.
 
