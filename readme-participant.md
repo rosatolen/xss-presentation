@@ -25,8 +25,7 @@ The following commands should run without errors:
 * But remember, a passing test does not imply correctness!
 
 ## Review slides (or become a facilitator!)
-* `./gradlew presentation:run`
-* Open `http://localhost:8081` in a web browser
+* Open presentation/xss.html in a web browser!
 
 ## Learn more
 

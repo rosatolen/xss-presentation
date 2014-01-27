@@ -20,8 +20,8 @@ A presentation and sample app on XSS defense and mitigation.
 ### Running the Application ###
 From the root directory `./gradlew xss-demo-app:run`
 
-### Running the Presentation ###
-From the root directory `./gradlew presentation:run`
+### Running the XSS Presentation ###
+From the root directory open presentation/xss.html in your browser.
 
 ### Running the Test Suites ###
 From the root directory:

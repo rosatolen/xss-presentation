@@ -4,10 +4,7 @@ scan though [the participant readme](readme-participant.md).
 
 ## Presentation
 
-The slides are html/js built using reveal.js. To run:
-
-* `./gradlew presentation:run`
-* Browse to `http://localhost:8081`
+The slides are html/js built using reveal.js. To view the slides, navigate to presentation/xss.html.
 
 For presentation mode and speaker notes: press `s` after opening. Will open in a seperate browser window
 
@@ -29,7 +26,6 @@ about what you should type.
 
 ## Print / Export PDF
 
-* `./gradlew presentation:run`
-* Open `http://localhost:8081` in Chrome with the `print-pdf` query parameter
-* For example: `http://localhost:8081/index.html?print-pdf`
-* Open the print dialog and either select a printer or export to PDF
+1. Open the presentation/xss.html file in your browser with the `print-pdf` query parameter
+2. For example: `file:///path/to/xss-presentation/presentation/src/main/resources/static/xss.html?print-pdf`
+3. Open the print dialog and either select a printer or export to PDF
