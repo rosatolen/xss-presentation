@@ -1,5 +1,6 @@
 package com.thoughtworks.appsec.xssDemo.uat;
 
+import com.google.common.base.Predicate;
 import com.thoughtworks.appsec.xssDemo.utils.GuestBookClient;
 import org.fluentlenium.adapter.FluentTest;
 import org.fluentlenium.core.Fluent;
@@ -76,7 +77,12 @@ public class GuestBookBrowserUATest extends FluentTest {
         client().postEntry("foo bar").postEntry("no match");
         goTo(HOME_PAGE).await().untilPage().isLoaded()
                 .fill(FILTER_TEXT).with("bar")
-                .await().atMost(3, SECONDS).until((Fluent f) -> f.find(ENTRY).size() == 1);
+                .await().atMost(3, SECONDS).until(new Predicate<Fluent>(){
+            @Override
+            public boolean apply(final Fluent f) {
+                return f.find(ENTRY).size() == 1;
+            }
+        });
         assertThat(findFirst(ENTRY).getText(), is("foo bar"));
     }
 }
