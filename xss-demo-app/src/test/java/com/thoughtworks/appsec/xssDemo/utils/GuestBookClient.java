@@ -3,9 +3,6 @@ package com.thoughtworks.appsec.xssDemo.utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableList;
 import com.thoughtworks.appsec.xssDemo.TestException;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpDelete;
@@ -143,18 +140,40 @@ public class GuestBookClient {
         }
     }
 
-    @Getter
-    @Setter
     public static class EntryResult {
         private List<Entry> found;
         private String filter;
+
+        public List<Entry> getFound() {
+            return found;
+        }
+
+        public void setFound(List<Entry> found) {
+            this.found = found;
+        }
+
+        public String getFilter() {
+            return filter;
+        }
+
+        public void setFilter(String filter) {
+            this.filter = filter;
+        }
     }
 
-    @ToString
     public static class Entry {
-        @Getter
-        @Setter
         private String contents;
+
+        public String getContents() {
+            return contents;
+        }
+
+        @Override
+        public String toString() {
+            return "Entry{" +
+                    "contents='" + contents + '\'' +
+                    '}';
+        }
     }
 
 }

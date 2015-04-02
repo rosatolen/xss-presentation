@@ -1,17 +1,10 @@
 package com.thoughtworks.appsec.xssDemo.controllers;
 
-import com.thoughtworks.appsec.xssDemo.AuthService;
 import com.thoughtworks.appsec.xssDemo.Constants;
 import com.thoughtworks.appsec.xssDemo.GuestBook;
 import com.thoughtworks.appsec.xssDemo.GuestBookEntry;
-import lombok.Data;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -31,22 +24,24 @@ public class GuestBookServiceController {
 
     @RequestMapping(value="/service/deleteEntries",  method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    @SneakyThrows(IOException.class)
     public DeleteResult deleteAll(HttpServletResponse response, HttpSession session) {
         return doDelete(response, session);
     }
 
     @RequestMapping(value="/service/entries",  method = RequestMethod.DELETE, produces = "application/json")
     @ResponseBody
-    @SneakyThrows(IOException.class)
     public DeleteResult deleteAllRest(HttpServletResponse response, HttpSession session) {
         return doDelete(response, session);
     }
 
-    private DeleteResult doDelete(final HttpServletResponse response, final HttpSession session) throws IOException {
+    private DeleteResult doDelete(final HttpServletResponse response, final HttpSession session) {
         UserState userState = (UserState) session.getAttribute(Constants.USER_STATE_SESSION_ATTRIBUTE);
         if (userState == null || !userState.isLoggedIn()) {
-            response.sendError(HttpServletResponse.SC_FORBIDDEN, "You do not have permission for this operation");
+            try {
+                response.sendError(HttpServletResponse.SC_FORBIDDEN, "You do not have permission for this operation");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             return new DeleteResult(0);
         }
         return new DeleteResult(guestBook.clearEntries());
@@ -66,14 +61,21 @@ public class GuestBookServiceController {
         return new SearchResult(found, filter);
     }
 
-    @Data
     public static class SearchResult {
         private final List<GuestBookEntry> found;
         private final String filter;
+
+        public SearchResult(final List<GuestBookEntry> found, final String filter) {
+            this.found = found;
+            this.filter = filter;
+        }
     }
 
-    @Data
     public static class DeleteResult {
         private final int count;
+
+        public DeleteResult(final int count) {
+            this.count = count;
+        }
     }
 }
