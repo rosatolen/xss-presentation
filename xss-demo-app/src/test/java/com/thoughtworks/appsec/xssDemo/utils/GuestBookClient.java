@@ -168,6 +168,10 @@ public class GuestBookClient {
             return contents;
         }
 
+        public void setContents(String contents) {
+            this.contents = contents;
+        }
+
         @Override
         public String toString() {
             return "Entry{" +

@@ -69,6 +69,14 @@ public class GuestBookServiceController {
             this.found = found;
             this.filter = filter;
         }
+
+        public List<GuestBookEntry> getFound() {
+            return found;
+        }
+
+        public String getFilter() {
+            return filter;
+        }
     }
 
     public static class DeleteResult {
@@ -76,6 +84,10 @@ public class GuestBookServiceController {
 
         public DeleteResult(final int count) {
             this.count = count;
+        }
+
+        public int getCount() {
+            return count;
         }
     }
 }
