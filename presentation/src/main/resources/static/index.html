@@ -391,26 +391,23 @@
                 </code>
             </pre>
         </section>
-        <section>
-            <h2>What is CSRF?</h2>
 
-            <p>
-                Cross Site Request Forgery: using the existing browser session to perform a privileged operation the
-                user doesn't intend or expect.
-            </p>
-            <aside class="notes">
-                The email deletion vulnerability
-            </aside>
-        </section>
         <section>
-            <h2>Defending Against CSRF</h2>
+          <h2>Fix It!</h2>
+
+          <pre><code class="bash">
+            ./gradlew xss-demo-app:appSecTest
+          </code></pre>
+
+          <aside class="notes">
             <ul>
-                <li>Tokenizer pattern</li>
-                <li>Built in CSRF protection is included in many frameworks</li>
-                <li>Double submission</li>
-                <li>Avoid POST, GET for modifying operations</li>
+              <li>Second hands on section, encourage pairs</li>
+              <li>Maybe ask inexperienced people to raise hands, pair inexperienced with experienced</li>
+              <li>Walk around the room and check up on people, give hints when necessary</li>
             </ul>
+          </aside>
         </section>
+
         <section>
             <h2>References</h2>
             <ul>
