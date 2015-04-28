@@ -12,10 +12,10 @@ The following commands should run without errors:
 * `./gradlew xss-presentation:test`
 * `./gradlew xss-presentation:intTest`
 * `./gradlew xss-presentation:uaTest`
-* `./gradlew xss-presentation:appSecTests # should fail at first`
+* `./gradlew xss-presentation:appSecTest # should fail at first`
 
 ## Fix it!
-* The `appSecTests` are there to guide you though fixing the vulnerabilities
+* The `appSecTest` are there to guide you though fixing the vulnerabilities
 * But remember, a passing test does not imply correctness!
 
 ## Run the app
