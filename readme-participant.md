@@ -14,13 +14,15 @@ The following commands should run without errors:
 * `./gradlew xss-presentation:uaTest`
 * `./gradlew xss-presentation:appSecTest # should fail at first`
 
-## Fix it!
-* The `appSecTest` are there to guide you though fixing the vulnerabilities
-* But remember, a passing test does not imply correctness!
-
 ## Run the app
 
 * `./gradlew xss-presentation:run`
+* Browse to `http://localhost:8080`
+* Admin username/password is `admin/password`
+
+## Fix it!
+* The `appSecTest` are there to guide you though fixing the vulnerabilities
+* But remember, a passing test does not imply correctness!
 
 ## Review slides (or become a facilitator!)
 * `./gradlew presentation:run`

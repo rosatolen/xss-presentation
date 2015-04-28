@@ -1,3 +1,7 @@
+I would recommend running through the workshop as a
+participant before facilitating. At the very least,
+scan though [the participant readme](readme-participant.md).
+
 ## Presentation
 
 The slides are html/js built using reveal.js. To run:
