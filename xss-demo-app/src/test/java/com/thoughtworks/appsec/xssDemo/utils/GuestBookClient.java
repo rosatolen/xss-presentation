@@ -1,6 +1,9 @@
 package com.thoughtworks.appsec.xssDemo.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Function;
+import com.google.common.base.Optional;
+import com.google.common.base.Supplier;
 import com.google.common.collect.ImmutableList;
 import com.thoughtworks.appsec.xssDemo.TestException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -19,9 +22,6 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 @Component
 public class GuestBookClient {
@@ -38,7 +38,13 @@ public class GuestBookClient {
     }
 
     public GuestBookClient waitForPing() {
-        waitFor(() -> ping().equals(Optional.of(200)));
+
+        waitFor(new Supplier<Boolean>(){
+            @Override
+            public Boolean get() {
+                return ping().equals(Optional.of(200));
+            }
+        });
         return this;
     }
 
@@ -62,7 +68,7 @@ public class GuestBookClient {
             final CloseableHttpResponse response = client.execute(get);
             return Optional.of(response.getStatusLine().getStatusCode());
         } catch (IOException e) {
-            return Optional.empty();
+            return Optional.absent();
         }
     }
 
@@ -80,15 +86,21 @@ public class GuestBookClient {
         return this;
     }
 
+
     public EntryResult getEntries() {
-        return doHttpRequest(new HttpGet(root + "/service/entries"), response->{
-            checkResponse(response);
-            try {
-                return new ObjectMapper().readValue(response.getEntity().getContent(), EntryResult.class);
-            } catch (IOException e) {
-                throw new TestException("Failed to fetch entries.", e);
+        return doHttpRequest(new HttpGet(root + "/service/entries"), new Function<CloseableHttpResponse, EntryResult>(){
+            @Override
+            public EntryResult apply(final CloseableHttpResponse response) {
+                checkResponse(response);
+                try {
+                    return new ObjectMapper().readValue(response.getEntity().getContent(), EntryResult.class);
+                } catch (IOException e) {
+                    throw new TestException("Failed to fetch entries.", e);
+                }
             }
         });
+
+
     }
 
     public GuestBookClient clearEntries() {

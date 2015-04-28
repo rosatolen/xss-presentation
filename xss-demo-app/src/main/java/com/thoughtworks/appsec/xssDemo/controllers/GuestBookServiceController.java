@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class GuestBookServiceController {
@@ -54,11 +54,15 @@ public class GuestBookServiceController {
 
     @RequestMapping(value="/service/entries", method= RequestMethod.GET)
     public SearchResult findEntries(@RequestParam(defaultValue = "") String filter) {
-        List<GuestBookEntry> found = guestBook.getEntries().stream()
-                .filter(entry->entry.getContents().contains(filter))
-                .collect(Collectors.toList());
 
-        return new SearchResult(found, filter);
+        List<GuestBookEntry> filtered = new ArrayList<>();
+        for (GuestBookEntry entry : guestBook.getEntries()) {
+            if (entry.getContents().contains(filter)) {
+                filtered.add(entry);
+            }
+        }
+
+        return new SearchResult(filtered, filter);
     }
 
     public static class SearchResult {
