@@ -2,6 +2,10 @@
 
 A presentation and sample app on XSS defense and mitigation.
 
+## [Getting started as a participant](readme-participant.md)
+
+## [Getting started as a facilitator](readme-facilitator.md)
+
 ## Requirements ##
 - Java 8
 - Chrome
