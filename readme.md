@@ -31,4 +31,7 @@ From the root directory:
 - `./gradlew xss-demo-app:test` runs the unit tests
 - `./gradlew xss-demo-app:intTest` runs the integration tests
 - `./gradlew xss-demo-app:uaTest` runs the user acceptance tests
+- `./gradlew xss-demo-app:appSecTest` runs the security tests
 
+Hints for appSecTests:
+[OWASP Injection Cheatsheet](https://www.owasp.org/index.php/Input_Validation_Cheat_Sheet)
