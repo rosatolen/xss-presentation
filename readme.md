@@ -34,4 +34,5 @@ From the root directory:
 - `./gradlew xss-demo-app:appSecTest` runs the security tests
 
 Hints for appSecTests:
-[OWASP Injection Cheatsheet](https://www.owasp.org/index.php/Input_Validation_Cheat_Sheet)
+[OWASP Input Validation Cheatsheet](https://www.owasp.org/index.php/Input_Validation_Cheat_Sheet)
+[OWASP XSS Prevention Cheatsheat](https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet)
