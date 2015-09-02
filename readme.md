@@ -35,4 +35,5 @@ From the root directory:
 
 Hints for appSecTests:
 [OWASP Input Validation Cheatsheet](https://www.owasp.org/index.php/Input_Validation_Cheat_Sheet)
+
 [OWASP XSS Prevention Cheatsheat](https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet)
