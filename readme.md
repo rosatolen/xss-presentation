@@ -24,6 +24,9 @@ From the root directory `./gradlew xss-demo-app:run`
 From the root directory open presentation/xss.html in your browser.
 
 ### Running the Test Suites ###
+In order to get the tests to work, please edit your /etc/hosts file to contain the line
+`127.0.0.1   example.com`
+
 From the root directory:
 - `./gradlew xss-demo-app:test` runs the unit tests
 - `./gradlew xss-demo-app:intTest` runs the integration tests
